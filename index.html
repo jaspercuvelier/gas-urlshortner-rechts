@@ -52,19 +52,24 @@
             pathInfo = pathName.replace("/","");
             if (pathInfo == "" || pathInfo == "takemetothedashboard") {
             var queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec?takemetothedashboard"
+            window.open(queryURL,'_top')
+            
+            
             }
             else {
              queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec?" + pathInfo;
-            }
-     
-        
-      fetch(queryURL,{  redirect: "follow", method: "GET", headers: { "Content-Type": "text/plain;charset=utf-8",}})
+                    fetch(queryURL,{  redirect: "follow", method: "GET", headers: { "Content-Type": "text/plain;charset=utf-8",}})
                   .then((response) => response.json())
                   .then((data) => {console.log('REDIRECT RETURNED');
                                   console.log(data)
                                   console.log('url:' + data.redirectURL);
                                     window.open(data.redirectURL, '_top')             
                                               })
+                
+            }
+     
+        
+  
         
     </script>
 
