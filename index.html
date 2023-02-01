@@ -55,7 +55,7 @@ var queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2
             }
      
         
-         fetch(queryURL,{ method: "GET", mode: 'no-cors', headers: { 'Content-Type': 'application/json'}})
+      fetch(queryURL,{  redirect: "follow", method: "GET", headers: { "Content-Type": "text/plain;charset=utf-8",}})
                   .then((response) => response.json())
                   .then((data) => {console.log('REDIRECT RETURNED');
                                   console.log(data)
