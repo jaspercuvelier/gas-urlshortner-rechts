@@ -45,18 +45,15 @@
     <script>
         var pathName = window.location.pathname;
         console.log(pathName);
-        if (pathName == "/") {
-         var queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec"
-        } else {
+        
+    
+var queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec"
+   
             pathInfo = pathName.replace("/","");
-            
-            var queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec?" + pathInfo;
-           
-            
-       
-           
-          
-        }
+            if (pathInfo !== ""){
+             queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec?" + pathInfo;
+            }
+     
         
          fetch(queryURL)
                   .then((response) => response.json())
