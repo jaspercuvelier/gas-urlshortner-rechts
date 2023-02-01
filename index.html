@@ -45,14 +45,20 @@
     <script>
         var pathName = window.location.pathname;
         if (pathName == "/") {} else {
-            pathInfo = pathName.replace("/","");/*
-            var newURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec?" + pathInfo;
-            window.open(newURL, '_top');*/
-            console.log(pathInfo)
-            if (pathInfo === "FMA"){
-                console.log("Bingo!")
-                window.open("https://www.sintamandusschoolmeulebeke.be", '_top');
-        }
+            pathInfo = pathName.replace("/","");
+            
+            var queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec?" + pathInfo;
+            fetch(queryURL)
+                  .then((response) => response.json())
+                  .then((data) => {console.log('REDIRECT RETURNED');
+                                  console.log(data)
+                                  console.log('url:' + data.redirectURL;
+                                    window.open(data.redirectURL, '_top')             
+                                              })
+            
+            /*window.open(newURL, '_top');*/
+           
+          
         }
     </script>
 
@@ -80,7 +86,10 @@
 </head>
 
 <body>
-    <iframe class="gas-frame" src="https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec"></iframe>
+    
+   <!--  <iframe class="gas-frame" src="https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec"></iframe>
+-->
+
 <script>
     // Check compatibility for the browser we're running this in
 if ("serviceWorker" in navigator) {
