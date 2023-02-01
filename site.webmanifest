@@ -81,7 +81,7 @@
 	"theme_color" : "#ffffff",
 	"background_color" : "#ffffff",
 	"display" : "standalone",
-	"start_url" : "https://tmt.pw/",
+	"start_url" : "https://links.sgfv.be/",
 	"lang" : "English",
 	"screenshots" : [],
 	"description" : "URL Shortener powered by Google Apps Script",
