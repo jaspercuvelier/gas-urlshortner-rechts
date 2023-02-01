@@ -47,10 +47,13 @@
         console.log(pathName);
         
     
-var queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec"
+
    
             pathInfo = pathName.replace("/","");
-            if (pathInfo !== ""){
+            if (pathInfo == "" || pathInfo == "takemetothedashboard") {
+            var queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec?takemetothedashboard"
+            }
+            else {
              queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec?" + pathInfo;
             }
      
