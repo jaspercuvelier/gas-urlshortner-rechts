@@ -58,7 +58,7 @@
           
         }
         
-         fetch(queryURL)
+         fetch(queryURL,{mode:'no-cors'})
                   .then((response) => response.json())
                   .then((data) => {console.log('REDIRECT RETURNED');
                                   console.log(data)
