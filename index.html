@@ -57,14 +57,34 @@
             
             }
             else {
+               
              queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec?" + pathInfo;
                     fetch(queryURL,{  redirect: "follow", method: "GET", headers: { "Content-Type": "text/plain;charset=utf-8",}})
                   .then((response) => response.json())
                   .then((data) => {console.log('REDIRECT RETURNED');
                                   console.log(data)
                                   console.log('url:' + data.redirectURL);
+                                   
+                                   
+                                   
+                                    try{
                                     window.open(data.redirectURL, '_top')             
-                                              })
+                                     }
+                                    catch(err){
+                                        console.log('Link kan niet geopend worden... :-(')
+                                        console.log(err)
+                                        var aTag = document.createElement('a')
+                                        aTag.href = data.redirectURL
+                                        aTag.innerHTML = "Klik hier om manueel naar de juiste site te gaan."
+                                        aTag.target = "_top"
+                                        document.getElementById('linksgohere').appendChild(aTag)
+                                    }
+                                  
+                                  
+                                  })
+                    
+              
+                    
                 
             }
      
@@ -100,7 +120,7 @@
     <h1>Hold on tight... I'm redirecting you...</h1>
    <!--  <iframe class="gas-frame" src="https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec"></iframe>
 -->
-
+    <div id="linksgohere"></div>
 <script>
     /*
     // Check compatibility for the browser we're running this in
