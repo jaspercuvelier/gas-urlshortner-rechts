@@ -2,145 +2,125 @@
 <html>
 
 <head>
-    <link rel="apple-touch-icon" sizes="180x180" href="imgs/favicon/512x512.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon/32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="imgs/favicon/16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="mask-icon" href="imgs/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <title>LINKS@SGFV.BE | Korte links met een lange arm</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="imgs/favicon/512x512.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon/32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="imgs/favicon/16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="mask-icon" href="imgs/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>LINKS@SGFV.BE | Korte links met een lange arm</title>
 
-    <!-- Start Single Page Apps for GitHub Pages -->
-    <script type="text/javascript">
-        // Single Page Apps for GitHub Pages
-        // https://github.com/rafrex/spa-github-pages
-        // Copyright (c) 2016 Rafael Pedicini, licensed under the MIT License
-        // ----------------------------------------------------------------------
-        // This script checks to see if a redirect is present in the query string
-        // and converts it back into the correct url and adds it to the
-        // browser's history using window.history.replaceState(...),
-        // which won't cause the browser to attempt to load the new url.
-        // When the single page app is loaded further down in this file,
-        // the correct url will be waiting in the browser's history for
-        // the single page app to route accordingly.
-        (function(l) {
-            if (l.search) {
-                var q = {};
-                l.search.slice(1).split('&').forEach(function(v) {
-                    var a = v.split('=');
-                    q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
-                });
-                if (q.p !== undefined) {
-                    window.history.replaceState(null, null,
-                        l.pathname.slice(0, -1) + (q.p || '') +
-                        (q.q ? ('?' + q.q) : '') +
-                        l.hash
-                    );
-                }
-            }
-        }(window.location))
-    </script>
-    <!-- End Single Page Apps for GitHub Pages -->
-    <script>
-        document.onload = function(){
-        var pathName = window.location.pathname;
-        console.log(pathName);
-        
-    
+  <!-- Start Single Page Apps for GitHub Pages -->
+  <script type="text/javascript">
+    // Single Page Apps for GitHub Pages
+    // https://github.com/rafrex/spa-github-pages
+    // Copyright (c) 2016 Rafael Pedicini, licensed under the MIT License
+    // ----------------------------------------------------------------------
+    // This script checks to see if a redirect is present in the query string
+    // and converts it back into the correct url and adds it to the
+    // browser's history using window.history.replaceState(...),
+    // which won't cause the browser to attempt to load the new url.
+    // When the single page app is loaded further down in this file,
+    // the correct url will be waiting in the browser's history for
+    // the single page app to route accordingly.
+    (function (l) {
+      if (l.search) {
+        var q = {};
+        l.search.slice(1).split('&').forEach(function (v) {
+          var a = v.split('=');
+          q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
+        });
+        if (q.p !== undefined) {
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + (q.p || '') +
+            (q.q ? ('?' + q.q) : '') +
+            l.hash
+          );
+        }
+      }
+    }(window.location))
+  </script>
+  <!-- End Single Page Apps for GitHub Pages -->
+  <script>
+        addEventListener('DOMContentLoaded', (event) => {
+      var pathName = window.location.pathname;
+      console.log(pathName);
 
-   
-            pathInfo = pathName.replace("/","");
-            if (pathInfo == "" || pathInfo == "takemetothedashboard") {
-            var queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec?takemetothedashboard"
-            
-            try{
-                                     var aTag = document.createElement('a')
-                                        aTag.href = queryURL
-                                        aTag.innerHTML = "Klik hier om de omleiding manueel te starten."
-                                        aTag.target = "_top"
-                                        document.getElementById('linksgohere').appendChild(aTag)
-            
-            window.open(queryURL,'_top')
-            }
-                catch(err){
-                 var ok = confirm("Hmmm... Ik neem je mee naar het dashboard.")
-                   if (ok) { window.open(queryURL,'_top')}
-                    
-                }
-            
-            }
-            else {
-               
-             queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec?" + pathInfo;
-                    fetch(queryURL,{  redirect: "follow", method: "GET", headers: { "Content-Type": "text/plain;charset=utf-8",}})
-                  .then((response) => response.json())
-                  .then((data) => {console.log('REDIRECT RETURNED');
-                                  console.log(data)
-                                  console.log('url:' + data.redirectURL);
-                                        
-                                         var aTag = document.createElement('a')
-                                        aTag.href = data.redirectURL
-                                        aTag.innerHTML = "Klik hier om de omleiding manueel te starten."
-                                        aTag.target = "_blank"
-                                        document.getElementById('linksgohere').appendChild(aTag)
-                                   
-                                   
-                                    try{
-                                    window.open(data.redirectURL, '_top')             
-                                     }
-                                    catch(err){
-                                        console.log('Link kan niet geopend worden... :-(')
-                                        console.log(err)
-                                        var aTag = document.createElement('a')
-                                        aTag.href = data.redirectURL
-                                        aTag.innerHTML = "Klik hier om de omleiding manueel te starten."
-                                        aTag.target = "_top"
-                                        document.getElementById('linksgohere').appendChild(aTag)
-                                    }
-                                  
-                                  
-                                  })
-                    
-              
-                    
-                
-            }
-     
-        
-  
-        }
-    </script>
 
-    <style>
-        .gas-frame {
-            border: none;
-            border-width: 0;
-            padding: 0;
-            margin: 0;
-            height: 100%;
-            width: 100%;
+
+
+      pathInfo = pathName.replace("/", "");
+      if (pathInfo == "" || pathInfo == "takemetothedashboard") {
+        var queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec?takemetothedashboard"
+
+        try {
+          var aTag = document.createElement('a')
+          aTag.href = queryURL
+          aTag.innerHTML = "Klik hier om de omleiding manueel te starten."
+          aTag.target = "_top"
+          document.getElementById('linksgohere').appendChild(aTag)
+
+          window.open(queryURL, '_top')
         }
-        
-        iframe {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            width: 100%;
+        catch (err) {
+          var ok = confirm("Hmmm... Ik neem je mee naar het dashboard.")
+          if (ok) { window.open(queryURL, '_top') }
+
         }
-    </style>
+
+      }
+      else {
+
+        queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec?" + pathInfo;
+        fetch(queryURL, { redirect: "follow", method: "GET", headers: { "Content-Type": "text/plain;charset=utf-8", } })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log('REDIRECT RETURNED');
+            console.log(data)
+            console.log('url:' + data.redirectURL);
+
+            var aTag = document.createElement('a')
+            aTag.href = data.redirectURL
+            aTag.innerHTML = "Klik hier om de omleiding manueel te starten."
+            aTag.target = "_blank"
+            document.getElementById('linksgohere').appendChild(aTag)
+
+
+            try {
+              window.open(data.redirectURL, '_top')
+            }
+            catch (err) {
+              console.log('Link kan niet geopend worden... :-(')
+              console.log(err)
+              var aTag = document.createElement('a')
+              aTag.href = data.redirectURL
+              aTag.innerHTML = "Klik hier om de omleiding manueel te starten."
+              aTag.target = "_top"
+              document.getElementById('linksgohere').appendChild(aTag)
+            }
+
+
+          })
+
+
+
+
+      }
+
+
+
+    })
+  </script>
 
 </head>
 
 <body>
-    <h1 style="text-align:center" >Even geduld... U wordt omgeleid naar de juiste pagina...</h1>
-   <!--  <iframe class="gas-frame" src="https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec"></iframe>
--->
-    <div id="linksgohere"></div>
-<script>
+  <h1 style="text-align:center">Even geduld... U wordt omgeleid naar de juiste pagina...</h1>
+
+  <div id="linksgohere"></div>
+  <span>V1.0</span>
+  <script>
     /*
     // Check compatibility for the browser we're running this in
 if ("serviceWorker" in navigator) {
@@ -157,7 +137,7 @@ if ("serviceWorker" in navigator) {
       });
   }
 }*/
-    </script>
+  </script>
 </body>
 
 </html>
