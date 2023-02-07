@@ -2,12 +2,15 @@
 <html>
 
 <head>
-  <link rel="apple-touch-icon" sizes="180x180" href="imgs/favicon/512x512.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon/32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="imgs/favicon/16x16.png">
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="mask-icon" href="imgs/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/icons/icon-512x512.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/icons/icon-72x72.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/icons/icon-72x72.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="mask-icon" href="images/icons/icon-192x192.png" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  
   <meta name="theme-color" content="#ffffff">
   <title>LINKS@SGFV.BE | Korte links met een lange arm</title>
 
@@ -44,6 +47,7 @@
   <!-- End Single Page Apps for GitHub Pages -->
   <script>
         addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById('finaldestination').style.visibility = "hidden";
       var pathName = window.location.pathname;
       console.log(pathName);
 
@@ -55,12 +59,8 @@
         var queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec?takemetothedashboard"
 
         try {
-          var aTag = document.createElement('a')
-          aTag.href = queryURL
-          aTag.innerHTML = "Klik hier om de omleiding manueel te starten."
-          aTag.target = "_top"
-          document.getElementById('linksgohere').appendChild(aTag)
-
+          document.getElementById('finaldestination').style.visibility = "visible"; 
+          document.getElementById('finaldestination').href = queryURL
           window.open(queryURL, '_top')
         }
         catch (err) {
@@ -79,12 +79,8 @@
             console.log('REDIRECT RETURNED');
             console.log(data)
             console.log('url:' + data.redirectURL);
-
-            var aTag = document.createElement('a')
-            aTag.href = data.redirectURL
-            aTag.innerHTML = "Klik hier om de omleiding manueel te starten."
-            aTag.target = "_blank"
-            document.getElementById('linksgohere').appendChild(aTag)
+            document.getElementById('finaldestination').style.visibility = "visible";
+            document.getElementById('finaldestination').href = data.redirectURL
 
 
             try {
@@ -93,11 +89,8 @@
             catch (err) {
               console.log('Link kan niet geopend worden... :-(')
               console.log(err)
-              var aTag = document.createElement('a')
-              aTag.href = data.redirectURL
-              aTag.innerHTML = "Klik hier om de omleiding manueel te starten."
-              aTag.target = "_top"
-              document.getElementById('linksgohere').appendChild(aTag)
+              document.getElementById('finaldestination').style.visibility = "visible";
+              document.getElementById('finaldestination').href = data.redirectURL
             }
 
 
@@ -114,12 +107,25 @@
   </script>
 
 </head>
+<body class="vw-100 vh-100 ">
+    <div class="bg-light p-3 h-100 d-flex flex-column justify-content-between align-items-center">
+        <h1 class="display-3">links.sgfv.be</h1>
+        <div class="card text-center text-dark bg-light mb-3 shadow">
+            <div class="card-header">
+                <h3>Even geduld...</h3>
+              </div>
+            <img src="https://media0.giphy.com/media/pFZTlrO0MV6LoWSDXd/giphy.gif?cid=5a38a5a23aw7ba2duzvty9teyva5tqo6elod5cjvc73bzb20&amp;rid=giphy.gif&amp;ct=g"
+               alt="Even geduld">
+            <div class="card-body">
+                <h4 class="card-title">U wordt omgeleid naar de juiste pagina...</h4>
+                <a id="finaldestination" href="" class="btn btn-primary" target="_top">Klik hier om de omleiding manueel te starten</a>
+            </div>
+        </div>
+        <img src="https://storage.googleapis.com/handige-snelle-downloads/logo/SGFV-logo.png" class="img-fluid"
+            alt="Logo sgfv">
+            <code style="position:absolute; bottom:0px">V1.0</code>
+    </div>
 
-<body>
-  <h1 style="text-align:center">Even geduld... U wordt omgeleid naar de juiste pagina...</h1>
-
-  <div id="linksgohere"></div>
-  <span>V1.0</span>
   <script>
     /*
     // Check compatibility for the browser we're running this in
@@ -138,6 +144,8 @@ if ("serviceWorker" in navigator) {
   }
 }*/
   </script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
