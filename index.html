@@ -62,8 +62,8 @@
 
 
       pathInfo = pathName.replace("/", "");
-      if (pathInfo == "" || pathInfo == "takemetothedashboard") {
-        var queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec?takemetothedashboard"
+      if (pathInfo == "") {
+        var queryURL = "https://script.google.com/macros/s/AKfycbw33alrs678lJrYrS1P9xPW2Zza4TVn606JXQL8FGkBuooD9AC107ZG3tGJ87-Gc5Ad/exec"
 
         try {
           document.getElementById('finaldestination').style.visibility = "visible"; 
@@ -114,7 +114,7 @@
   </script>
 
 </head>
-<body class="bg-primary ">
+<body class="bg-light ">
     <div class="container bg-light vw-100 vh-100 d-flex flex-column justify-content-between align-items-center">
        
 
